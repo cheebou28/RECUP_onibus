@@ -5,7 +5,7 @@ export default function App() {
   return (
     <View style={styles.container}>
 
-      <Text style={styles.title}>Welcome back!</Text>
+      <Text style={styles.title}>Let’s start!</Text>
 
       <TextInput
         style={styles.input1}
@@ -17,11 +17,15 @@ export default function App() {
         placeholder="Password"
       />
 
+      <TextInput
+        style={styles.input2}
+        placeholder="Password again"
+      />
+
       <TouchableHighlight style={styles.button}>
-        <Text style={styles.login}>LOGIN</Text>
+        <Text style={styles.signup}>メンバー登録</Text>
       </TouchableHighlight>
 
-      <Text style={styles.signup}>メンバー登録</Text>
     </View>
   );
 }
@@ -40,7 +44,7 @@ const styles = StyleSheet.create({
   input1: {
     fontSize: 14,
     marginLeft: 40,
-    marginTop: 100,
+    marginTop: 80,
     marginRight: 40,
     height: 48,
     borderWidth: 0.7,
@@ -56,26 +60,19 @@ const styles = StyleSheet.create({
     borderColor: '#3AD29F',
   },
   button: {
-    backgroundColor: '#3AD29F',
+    backgroundColor: '#4EC7C4',
     height: 48,
     borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center',
     width: '80%',
-    marginLeft:40,
-    marginTop: 100,
+    marginLeft: 40,
+    marginTop: 50,
     shadowColor: '#445EE9',
     shadowOffset: { widh: 0, height: 2 },
   },
-  login: {
-    color: '#fff',
-  },
   signup: {
     fontSize: 16,
-    marginTop: 25,
-    marginLeft: 160,
-    color: '#005226',
-  },
-  illust: {
+    color: '#fff',
   },
 });
