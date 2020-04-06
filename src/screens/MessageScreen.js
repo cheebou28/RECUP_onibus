@@ -1,26 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.explain}>Login or Signup to your account</Text>
+class MessageScreen extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.explain}>Login or Signup to your account</Text>
 
-      <Text style={styles.title1}>Live your life smarter</Text>
-      <Text style={styles.title2}>with us</Text>
+        <Text style={styles.title1}>Live your life smarter</Text>
+        <Text style={styles.title2}>with us</Text>
 
-      <Text style={styles.illust}>イメージ画像</Text>
+        <Text style={styles.illust}>イメージ画像</Text>
 
-      <TouchableHighlight style={styles.button}>
-        <Text style={styles.login}>LOGIN</Text>
-      </TouchableHighlight>
+        <TouchableHighlight style={styles.button}>
+          <Text style={styles.login}>LOGIN</Text>
+        </TouchableHighlight>
 
-      <Text style={styles.signup}>メンバー登録</Text>
-    </View>
-  );
+        <Text style={styles.signup}>メンバー登録</Text>
+      </View>
+    );
+  }
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.creat({
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -66,3 +68,5 @@ const styles = StyleSheet.create({
   illust: {
   },
 });
+
+export default MessageScreen;
