@@ -1,33 +1,35 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, TextInput } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
+class SubmitScreen extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
 
-      <Text style={styles.title}>Let’s start!</Text>
+        <Text style={styles.title}>Let’s start!</Text>
 
-      <TextInput
-        style={styles.input1}
-        placeholder="Email Adress"
-      />
+        <TextInput
+          style={styles.input1}
+          placeholder="Email Adress"
+        />
 
-      <TextInput
-        style={styles.input2}
-        placeholder="Password"
-      />
+        <TextInput
+          style={styles.input2}
+          placeholder="Password"
+        />
 
-      <TextInput
-        style={styles.input2}
-        placeholder="Password again"
-      />
+        <TextInput
+          style={styles.input2}
+          placeholder="Password again"
+        />
 
-      <TouchableHighlight style={styles.button}>
-        <Text style={styles.signup}>メンバー登録</Text>
-      </TouchableHighlight>
+        <TouchableHighlight style={styles.button}>
+          <Text style={styles.signup}>メンバー登録</Text>
+        </TouchableHighlight>
 
-    </View>
-  );
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -76,3 +78,5 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
 });
+
+export default SubmitScreen;

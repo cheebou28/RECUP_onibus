@@ -1,80 +1,54 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, TextInput } from 'react-native';
+import { View, StyleSheet, Text, Image } from 'react-native';
+import MapScreen from './src/screens/MapScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
+class NavigationScreen extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
 
-      <Text style={styles.title1}>Payment amount</Text>
-      <Text style={styles.price}>¥500</Text>
+        <MapScreen />
 
-      <Text style={styles.title2}>Name on card</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="TAKU KODAIRA"
-      />
+        <View style={styles.display}>
+          <Text style={styles.cafename}>RATIO & C</Text>
+          <Text style={styles.opentime}>営業中</Text>
+          <Image
+            source={{ uri: 'http://drive.google.com/uc?export=view&id=1kFmtWn8YZS3HH9xb1DwDFla_JFIJlX0i' }}
+            style={{ marginLeft:10, width:50, height:50, backgroundColor: '#fff' }}
+          />
 
-      <Text style={styles.title2}>Card number</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="1234 5678 9012 3456"
-      />
-
-      <Text style={styles.title2}>Expiry date</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="05/23"
-      />
-
-      <Text style={styles.title2}>Security code</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="123"
-      />
-
-
-      <TouchableHighlight style={styles.button}>
-        <Text style={styles.signup}>クレジットカード登録</Text>
-      </TouchableHighlight>
-
-      <Text style={styles.later}>Later</Text>
-
-    </View>
-  );
+          <Text style={styles.cup}>6 cup</Text>
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%',
+  },
+  display: {
+    height: 250,
+    width: 350,
+    marginLeft: 35,
+    marginTop: 600,
+    position: 'absolute',
     backgroundColor: '#fff',
-  },
-
-  title1: {
-    fontSize: 16,
-    color: '#3E4A59',
-    marginTop: 100,
-    marginLeft: 40,
-  },
-  price: {
-    fontSize: 30,
-    marginLeft: 40,
-    marginTop: 5,
-  },
-  input: {
-    fontSize: 14,
-    marginLeft: 40,
-    marginTop: 10,
-    marginRight: 40,
-    height: 48,
-    borderWidth: 0.7,
-    borderColor: '#3AD29F',
     borderRadius: 4,
   },
-  title2: {
-    fontSize: 16,
-    color: '#3E4A59',
-    marginTop: 20,
-    marginLeft: 40,
+  cafename: {
+    marginTop: 30,
+    marginLeft: 20,
+    fontSize: 20,
+    fontFamily: 'HelveticaNeue-Light',
+  },
+  opentime: {
+    fontFamily: 'HelveticaNeue',
+    fontSize: 12,
+    marginLeft: 20,
+    marginTop: 10,
   },
   button: {
     backgroundColor: '#4EC7C4',
@@ -88,14 +62,5 @@ const styles = StyleSheet.create({
     shadowColor: '#445EE9',
     shadowOffset: { widh: 0, height: 2 },
   },
-  signup: {
-    fontSize: 16,
-    color: '#fff',
-  },
-  later: {
-    fontSize: 16,
-    color: '#005226',
-    alignSelf: 'center',
-    marginTop: 20,
-  },
 });
+export default NavigationScreen;
