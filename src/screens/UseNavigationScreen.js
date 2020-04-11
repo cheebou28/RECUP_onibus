@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableHighlight } from 'react-native';
-import MapScreen from './src/screens/MapScreen';
+import MapScreen from './MapScreen';
 
-class ReturnNavigationScreen extends React.Component {
+class UseNavigationScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
@@ -26,7 +26,7 @@ class ReturnNavigationScreen extends React.Component {
             <Text style={styles.distance}>0.2 KM</Text>
           </View>
           <TouchableHighlight style={styles.button}>
-            <Text style={styles.use}>Return       　　　　　　            →</Text>
+            <Text style={styles.use}>Use       　　　　　　　　         →</Text>
           </TouchableHighlight>
         </View>
       </View>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   button: {
-    backgroundColor: '#8ABEF3',
+    backgroundColor: '#FF8888',
     height: 55,
     borderRadius: 4,
     justifyContent: 'center',
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
     shadowOffset: { widh: 0, height: 2 },
   },
 });
-export default ReturnNavigationScreen;
+export default UseNavigationScreen;
