@@ -1,16 +1,18 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TouchableHighlight, Image } from 'react-native';
 
 class MessageScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.explain}>Login or Signup to your account</Text>
-
         <Text style={styles.title1}>Live your life smarter</Text>
         <Text style={styles.title2}>with us</Text>
 
-        <Text style={styles.illust}>イメージ画像</Text>
+        <Image
+          source={{ uri: 'http://drive.google.com/uc?export=view&id=1fOnVsYgNWoMGMCXk2YwmTeUDTi8h29jc' }}
+          style={{ marginLeft:40, marginTop:20, width:'100%', height:400, backgroundColor: '#fff' }}
+        />
 
         <TouchableHighlight style={styles.button}>
           <Text style={styles.login}>LOGIN</Text>
@@ -22,15 +24,14 @@ class MessageScreen extends React.Component {
   }
 }
 
-const styles = StyleSheet.creat({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
   explain: {
     fontSize: 16,
     color: '#3E4A59',
-    marginTop: 100,
+    marginTop: 60,
     marginLeft: 40,
   },
   title1: {
@@ -52,7 +53,7 @@ const styles = StyleSheet.creat({
     alignItems: 'center',
     width: '80%',
     marginLeft:40,
-    marginTop: 450,
+    marginTop: 30,
     shadowColor: '#445EE9',
     shadowOffset: { widh: 0, height: 2 },
   },
@@ -64,8 +65,6 @@ const styles = StyleSheet.creat({
     marginTop: 25,
     marginLeft: 160,
     color: '#005226',
-  },
-  illust: {
   },
 });
 

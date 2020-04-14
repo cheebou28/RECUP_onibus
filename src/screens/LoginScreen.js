@@ -1,29 +1,31 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, TextInput } from 'react-native';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
+class LoginScreen extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
 
-      <Text style={styles.title}>Welcome back!</Text>
+        <Text style={styles.title}>Welcome back!</Text>
 
-      <TextInput
-        style={styles.input1}
-        placeholder="Email Adress"
-      />
+        <TextInput
+          style={styles.input1}
+          placeholder="Email Adress"
+        />
 
-      <TextInput
-        style={styles.input2}
-        placeholder="Password"
-      />
+        <TextInput
+          style={styles.input2}
+          placeholder="Password"
+        />
 
-      <TouchableHighlight style={styles.button}>
-        <Text style={styles.login}>LOGIN</Text>
-      </TouchableHighlight>
+        <TouchableHighlight style={styles.button}>
+          <Text style={styles.login}>LOGIN</Text>
+        </TouchableHighlight>
 
-      <Text style={styles.signup}>メンバー登録</Text>
-    </View>
-  );
+        <Text style={styles.signup}>メンバー登録</Text>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -79,3 +81,5 @@ const styles = StyleSheet.create({
   illust: {
   },
 });
+
+export default LoginScreen;

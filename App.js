@@ -1,86 +1,62 @@
-import React from 'react';
-import { View, StyleSheet, Text, Image, TouchableHighlight } from 'react-native';
-import MapScreen from './src/screens/MapScreen';
+import React, { useState, useEffect } from 'react';
+import { Text, View, StyleSheet, Button } from 'react-native';
+import { BarCodeScanner } from 'expo-barcode-scanner';
+import * as Permissions from 'expo-permissions';
 
-class ReturnNavigationScreen extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
+export default function App() {
+  const [hasPermission, setHasPermission] = useState(null);
+  const [scanned, setScanned] = useState(false);
 
-        <MapScreen />
+  useEffect(() => {
+    (async () => {
+      const { status } = await BarCodeScanner.requestPermissionsAsync();
+      setHasPermission(status === 'granted');
+    })();
+  }, []);
 
-        <View style={styles.display}>
-          <Text style={styles.cafename}>RATIO & C</Text>
-          <Text style={styles.opentime}>営業中</Text>
+  const handleBarCodeScanned = ({ type, data }) => {
+    setScanned(true);
+    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+  };
 
-          <View style={{ flexDirection: 'row' }}>
-            <Image
-              source={{ uri: 'http://drive.google.com/uc?export=view&id=1kFmtWn8YZS3HH9xb1DwDFla_JFIJlX0i' }}
-              style={{ marginLeft:10, marginTop:20, width:50, height:50, backgroundColor: '#fff' }}
-            />
-            <Text style={styles.cup}>6 cup</Text>
-            <Image
-              source={{ uri: 'http://drive.google.com/uc?export=view&id=1kFmtWn8YZS3HH9xb1DwDFla_JFIJlX0i' }}
-              style={{ marginLeft:35, marginTop:20, width:50, height:50, backgroundColor: '#fff' }}
-            />
-            <Text style={styles.distance}>0.2 KM</Text>
-          </View>
-          <TouchableHighlight style={styles.button}>
-            <Text style={styles.use}>Return       　　　　　　            →</Text>
-          </TouchableHighlight>
-        </View>
-      </View>
-    );
+  if (hasPermission === null) {
+    return <Text>Requesting for camera permission</Text>;
   }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.description}>RECUPのQRコードをスキャンしてください</Text>
+      <BarCodeScanner
+        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+        style={styles.barcode}
+      />
+      <Text style={styles.goback}>Go Back</Text>
+      {scanned && <Button title="Tap to Scan Again" onPress={() => setScanned(false)} />}
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
   },
-  display: {
-    height: 250,
-    width: 350,
-    marginLeft: 35,
-    marginTop: 600,
-    position: 'absolute',
-    backgroundColor: '#fff',
-    borderRadius: 4,
+  barcode: {
+    flex: 1,
+    height: '55%',
+    marginLeft:40,
+    marginRight:40,
+    borderRadius: 20,
   },
-  cafename: {
-    marginTop: 30,
-    marginLeft: 20,
-    fontSize: 20,
-    fontFamily: 'HelveticaNeue-Light',
+  description: {
+    fontSize: 16,
+    marginTop: '40%',
+    alignSelf: 'center',
   },
-  opentime: {
-    fontFamily: 'HelveticaNeue-Light',
-    fontSize: 12,
-    marginLeft: 20,
-    marginTop: 10,
-  },
-  cup: {
-    marginTop: 40,
-  },
-  distance: {
-    marginTop: 40,
-  },
-  use: {
-    color: '#fff',
-    fontSize: 18,
-  },
-  button: {
-    backgroundColor: '#8ABEF3',
-    height: 55,
-    borderRadius: 4,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '88%',
-    marginLeft:20,
-    marginTop: 10,
-    shadowColor: '#445EE9',
-    shadowOffset: { widh: 0, height: 2 },
+  goback: {
+    marginBottom: '15%',
+    alignSelf: 'center',
   },
 });
-export default ReturnNavigationScreen;
