@@ -29,11 +29,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Scan</Text>
-      <Text style={styles.description}>RECUPのQRコードをスキャンしてください</Text>
       <Image
         source={{ uri: 'http://drive.google.com/uc?export=view&id=1kU2L0kwWvmxfxg5n9PAemGSastsb_53E' }}
         style={{ alignSelf: 'center', width:120, height:120, backgroundColor: '#fff' }}
       />
+      <Text style={styles.description}>RECUPのQRコードをスキャンしてください</Text>
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={styles.barcode}
@@ -47,6 +47,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
   },
   title: {
     marginTop: '10%',

@@ -1,14 +1,15 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, TextInput, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 class PaymentScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-
+        <Ionicons name="md-arrow-round-back" style={styles.back} onPress={() => { this.props.navigation.navigate('Submit'); }} />
         <Image
           source={{ uri: 'http://drive.google.com/uc?export=view&id=1fa_ZT9ot-lnnCPyHjDd0S8YAjT3pLAW-' }}
-          style={{ marginTop:40, alignSelf:'center', width:200, height: 40, backgroundColor: '#fff' }}
+          style={{ alignSelf:'center', width:200, height: 40, backgroundColor: '#fff' }}
         />
         <Text style={styles.title1}>Payment amount</Text>
         <Text style={styles.price}>¥500</Text>
@@ -25,7 +26,7 @@ class PaymentScreen extends React.Component {
           placeholder="1234 5678 9012 3456"
         />
 
-        <Text style={styles.title2}>Expiry date / Security code</Text>
+        <Text style={styles.title2}>Expiry date       /      Security code</Text>
 
         <View style={{ flexDirection: 'row' }}>
           <TextInput
@@ -39,11 +40,11 @@ class PaymentScreen extends React.Component {
           />
         </View>
 
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('NaviUse'); }}>
           <Text style={styles.signup}>クレジットカード登録</Text>
         </TouchableHighlight>
 
-        <Text style={styles.later}>Later</Text>
+        <Text style={styles.later} onPress={() => { this.props.navigation.navigate('NaviUse'); }}>Later</Text>
 
       </View>
     );
@@ -53,12 +54,19 @@ class PaymentScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
+    flex: 1,
   },
-
+  back: {
+    marginTop: '10%',
+    marginLeft: 40,
+    fontSize: 30,
+    color: '#3E4A59',
+    opacity: 0.5,
+  },
   title1: {
     fontSize: 16,
     color: '#3E4A59',
-    marginTop: 50,
+    marginTop: '10%',
     marginLeft: 40,
     fontFamily: 'HelveticaNeue-Italic',
   },
@@ -71,11 +79,10 @@ const styles = StyleSheet.create({
   input: {
     fontSize: 14,
     marginLeft: 40,
-    marginTop: 10,
-    marginRight: 40,
+    width: '70%',
     height: 48,
     borderWidth: 0.7,
-    borderColor: '#3AD29F',
+    borderColor: '#5D717A',
     borderRadius: 4,
   },
   input2: {
@@ -83,10 +90,10 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     height: 48,
     marginTop: 10,
-    borderColor: '#3AD29F',
+    borderColor: '#5D717A',
     borderRadius: 4,
     borderWidth: 0.7,
-    width: 100,
+    width: 125,
   },
   title2: {
     fontSize: 16,
@@ -103,9 +110,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '80%',
     marginLeft:40,
-    marginTop: 70,
-    shadowColor: '#445EE9',
-    shadowOffset: { widh: 0, height: 2 },
+    marginTop: 90,
+    shadowColor: '#979797',
+    shadowOffset: { widh: 0, height: 1 },
+    shadowRadius: 1,
+    shadowOpacity: 1,
   },
   signup: {
     fontSize: 16,
@@ -117,6 +126,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: 20,
     fontFamily: 'HelveticaNeue-Italic',
+    textDecorationLine: 'underline',
+    opacity: 0.7,
   },
 });
 

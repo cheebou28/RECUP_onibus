@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableHighlight } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
 import MapScreen from './MapScreen';
 
 class UseNavigationScreen extends React.Component {
@@ -8,6 +10,7 @@ class UseNavigationScreen extends React.Component {
       <View style={styles.container}>
 
         <MapScreen />
+        <Ionicons name="md-list" style={styles.back} />
 
         <View style={styles.display}>
           <Text style={styles.cafename}>RATIO & C</Text>
@@ -25,7 +28,7 @@ class UseNavigationScreen extends React.Component {
             />
             <Text style={styles.distance}>0.2 KM</Text>
           </View>
-          <TouchableHighlight style={styles.button}>
+          <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('QRcodeScreen'); }}>
             <Text style={styles.use}>Use       　　　　　　　　         →</Text>
           </TouchableHighlight>
         </View>
@@ -39,11 +42,18 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
   },
+  back: {
+    marginTop: '10%',
+    marginLeft: 40,
+    fontSize: 30,
+    color: 'black',
+    position: 'absolute',
+  },
   display: {
     height: 250,
     width: 350,
     marginLeft: 35,
-    marginTop: 600,
+    marginTop: 500,
     position: 'absolute',
     backgroundColor: '#fff',
     borderRadius: 4,

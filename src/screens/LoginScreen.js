@@ -1,10 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, TextInput } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <Ionicons name="md-arrow-round-back" style={styles.back} onPress={() => { this.props.navigation.navigate('Message'); }} />
 
         <Text style={styles.title}>Welcome back!</Text>
 
@@ -18,11 +20,11 @@ class LoginScreen extends React.Component {
           placeholder="Password"
         />
 
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('NaviUse'); }}>
           <Text style={styles.login}>LOGIN</Text>
         </TouchableHighlight>
 
-        <Text style={styles.signup}>メンバー登録</Text>
+        <Text style={styles.signup} onPress={() => { this.props.navigation.navigate('Submit'); }}>メンバー登録</Text>
       </View>
     );
   }
@@ -31,31 +33,38 @@ class LoginScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
+    flex: 1,
   },
-
+  back: {
+    marginTop: '10%',
+    marginLeft: 40,
+    fontSize: 30,
+    color: '#3E4A59',
+    opacity: 0.5,
+  },
   title: {
     fontSize: 40,
     color: '#3E4A59',
-    marginTop: 150,
+    marginTop: '15%',
     marginLeft: 40,
   },
   input1: {
     fontSize: 14,
-    marginLeft: 40,
     marginTop: 100,
-    marginRight: 40,
     height: 48,
-    borderWidth: 0.7,
-    borderColor: '#3AD29F',
+    width: '80%',
+    alignSelf: 'center',
+    borderBottomWidth: 0.7,
+    borderBottomColor: '#3AD29F',
   },
   input2: {
     fontSize: 14,
-    marginLeft: 40,
     marginTop: 25,
-    marginRight: 40,
     height: 48,
-    borderWidth: 0.7,
-    borderColor: '#3AD29F',
+    width: '80%',
+    alignSelf: 'center',
+    borderBottomWidth: 0.7,
+    borderBottomColor: '#3AD29F',
   },
   button: {
     backgroundColor: '#3AD29F',
@@ -64,7 +73,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: '80%',
-    marginLeft:40,
+    alignSelf: 'center',
     marginTop: 100,
     shadowColor: '#445EE9',
     shadowOffset: { widh: 0, height: 2 },
@@ -74,9 +83,11 @@ const styles = StyleSheet.create({
   },
   signup: {
     fontSize: 16,
-    marginTop: 25,
-    marginLeft: 160,
+    marginTop: '5%',
+    alignSelf: 'center',
     color: '#005226',
+    textDecorationLine: 'underline',
+    opacity: 0.5,
   },
   illust: {
   },

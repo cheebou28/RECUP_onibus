@@ -1,11 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, TextInput } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
 class SubmitScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-
+        <Ionicons name="md-arrow-round-back" style={styles.back} onPress={() => { this.props.navigation.navigate('Message'); }} />
         <Text style={styles.title}>Let’s start!</Text>
 
         <TextInput
@@ -23,7 +24,7 @@ class SubmitScreen extends React.Component {
           placeholder="Password again"
         />
 
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('Payment'); }}>
           <Text style={styles.signup}>メンバー登録</Text>
         </TouchableHighlight>
 
@@ -35,13 +36,21 @@ class SubmitScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
+    flex: 1,
   },
 
   title: {
     fontSize: 40,
     color: '#3E4A59',
-    marginTop: 150,
+    marginTop: '20%',
     marginLeft: 40,
+  },
+  back: {
+    marginTop: '10%',
+    marginLeft: 40,
+    fontSize: 30,
+    color: '#3E4A59',
+    opacity: 0.5,
   },
   input1: {
     fontSize: 14,
@@ -49,8 +58,8 @@ const styles = StyleSheet.create({
     marginTop: 80,
     marginRight: 40,
     height: 48,
-    borderWidth: 0.7,
-    borderColor: '#3AD29F',
+    borderBottomWidth: 0.7,
+    borderBottomColor: '#3AD29F',
   },
   input2: {
     fontSize: 14,
@@ -58,8 +67,8 @@ const styles = StyleSheet.create({
     marginTop: 25,
     marginRight: 40,
     height: 48,
-    borderWidth: 0.7,
-    borderColor: '#3AD29F',
+    borderBottomWidth: 0.7,
+    borderBottomColor: '#3AD29F',
   },
   button: {
     backgroundColor: '#4EC7C4',
@@ -70,8 +79,10 @@ const styles = StyleSheet.create({
     width: '80%',
     marginLeft: 40,
     marginTop: 50,
-    shadowColor: '#445EE9',
-    shadowOffset: { widh: 0, height: 2 },
+    shadowColor: '#979797',
+    shadowOffset: { widh: 0, height: 1 },
+    shadowRadius: 1,
+    shadowOpacity: 1,
   },
   signup: {
     fontSize: 16,

@@ -11,14 +11,14 @@ class MessageScreen extends React.Component {
 
         <Image
           source={{ uri: 'http://drive.google.com/uc?export=view&id=1fOnVsYgNWoMGMCXk2YwmTeUDTi8h29jc' }}
-          style={{ marginLeft:40, marginTop:20, width:'100%', height:400, backgroundColor: '#fff' }}
+          style={{ marginTop:20, width:'100%', height:'50%', backgroundColor: '#fff' }}
         />
 
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('Login'); }}>
           <Text style={styles.login}>LOGIN</Text>
         </TouchableHighlight>
 
-        <Text style={styles.signup}>メンバー登録</Text>
+        <Text style={styles.signup} onPress={() => { this.props.navigation.navigate('Submit'); }}>メンバー登録</Text>
       </View>
     );
   }
@@ -27,17 +27,18 @@ class MessageScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#fff',
   },
   explain: {
     fontSize: 16,
     color: '#3E4A59',
-    marginTop: 60,
+    marginTop: '20%',
     marginLeft: 40,
   },
   title1: {
     fontSize: 30,
     color: '#3AD29F',
-    marginTop: 20,
+    marginTop: '6%',
     marginLeft: 40,
   },
   title2: {
@@ -54,17 +55,20 @@ const styles = StyleSheet.create({
     width: '80%',
     marginLeft:40,
     marginTop: 30,
-    shadowColor: '#445EE9',
-    shadowOffset: { widh: 0, height: 2 },
+    shadowColor: '#979797',
+    shadowOffset: { widh: 0, height: 1 },
+    shadowRadius: 1,
+    shadowOpacity: 1,
   },
   login: {
     color: '#fff',
   },
   signup: {
     fontSize: 16,
-    marginTop: 25,
-    marginLeft: 160,
+    marginTop: '5%',
+    alignSelf: 'center',
     color: '#005226',
+    textDecorationLine: 'underline',
   },
 });
 
