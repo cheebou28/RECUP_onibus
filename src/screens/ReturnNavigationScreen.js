@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, TouchableHighlight } from 'react-native';
-import MapScreen from './MapScreen';
+import MapScreen from '../components/MapScreen';
 
 class ReturnNavigationScreen extends React.Component {
   render() {

@@ -40,11 +40,11 @@ class PaymentScreen extends React.Component {
           />
         </View>
 
-        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('NaviUse'); }}>
+        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('UseNavi'); }}>
           <Text style={styles.signup}>クレジットカード登録</Text>
         </TouchableHighlight>
 
-        <Text style={styles.later} onPress={() => { this.props.navigation.navigate('NaviUse'); }}>Later</Text>
+        <Text style={styles.later} onPress={() => { this.props.navigation.navigate('UseNavi'); }}>Later</Text>
 
       </View>
     );

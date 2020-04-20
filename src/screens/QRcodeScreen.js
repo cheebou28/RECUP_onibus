@@ -3,45 +3,47 @@ import { Text, View, StyleSheet, Button, Image } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import * as Permissions from 'expo-permissions';
 
-export default function App() {
-  const [hasPermission, setHasPermission] = useState(null);
-  const [scanned, setScanned] = useState(false);
+class QRcodeScreen extends React.Component {
+  render() {
+    const [hasPermission, setHasPermission] = useState(null);
+    const [scanned, setScanned] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      const { status } = await BarCodeScanner.requestPermissionsAsync();
-      setHasPermission(status === 'granted');
-    })();
-  }, []);
+    useEffect(() => {
+      (async () => {
+        const { status } = await BarCodeScanner.requestPermissionsAsync();
+        setHasPermission(status === 'granted');
+      })();
+    }, []);
 
-  const handleBarCodeScanned = ({ type, data }) => {
-    setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-  };
+    const handleBarCodeScanned = ({ type, data }) => {
+      setScanned(true);
+      alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    };
 
-  if (hasPermission === null) {
-    return <Text>Requesting for camera permission</Text>;
+    if (hasPermission === null) {
+      return <Text>Requesting for camera permission</Text>;
+    }
+    if (hasPermission === false) {
+      return <Text>No access to camera</Text>;
+    }
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Scan</Text>
+        <Image
+          source={{ uri: 'http://drive.google.com/uc?export=view&id=1kU2L0kwWvmxfxg5n9PAemGSastsb_53E' }}
+          style={{ alignSelf: 'center', width:120, height:120, backgroundColor: '#fff' }}
+        />
+        <Text style={styles.description}>RECUPのQRコードをスキャンしてください</Text>
+        <BarCodeScanner
+          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+          style={styles.barcode}
+        />
+        <Text style={styles.goback}>Go Back</Text>
+        {scanned && <Button title="Tap to Scan Again" onPress={() => setScanned(false)} />}
+      </View>
+    );
   }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Scan</Text>
-      <Image
-        source={{ uri: 'http://drive.google.com/uc?export=view&id=1kU2L0kwWvmxfxg5n9PAemGSastsb_53E' }}
-        style={{ alignSelf: 'center', width:120, height:120, backgroundColor: '#fff' }}
-      />
-      <Text style={styles.description}>RECUPのQRコードをスキャンしてください</Text>
-      <BarCodeScanner
-        onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-        style={styles.barcode}
-      />
-      <Text style={styles.goback}>Go Back</Text>
-      {scanned && <Button title="Tap to Scan Again" onPress={() => setScanned(false)} />}
-    </View>
-  );
 }
 
 const styles = StyleSheet.create({
@@ -83,3 +85,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
+export default QRcodeScreen;

@@ -20,7 +20,7 @@ class LoginScreen extends React.Component {
           placeholder="Password"
         />
 
-        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('NaviUse'); }}>
+        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('UseNavi'); }}>
           <Text style={styles.login}>LOGIN</Text>
         </TouchableHighlight>
 
