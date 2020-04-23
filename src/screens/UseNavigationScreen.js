@@ -6,25 +6,26 @@ import { Ionicons } from '@expo/vector-icons';
 import Icon from 'react-native-vector-icons';
 import MapScreen from '../components/MapScreen';
 import QRcodeScreen from './QRcodeScreen';
+import MenuScreen from './MenuScreen';
 
 class UseNavigationScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
         <MapScreen />
-        <Ionicons name="ios-settings" style={styles.setting} onPress={() => { this.props.navigation.navigate('Message'); }} />
+        <Ionicons name="ios-settings" style={styles.setting} onPress={() => { this.props.navigation.navigate('Menu'); }} />
         <View style={styles.display}>
           <Text style={styles.cafename}>RATIO & C</Text>
           <Text style={styles.opentime}>営業中</Text>
 
           <View style={{ flexDirection: 'row' }}>
             <Image
-              source={{ uri: 'http://drive.google.com/uc?export=view&id=1kFmtWn8YZS3HH9xb1DwDFla_JFIJlX0i' }}
-              style={{ marginLeft:10, marginTop:20, width:50, height:50, backgroundColor: '#fff' }}
+              source={{ uri: 'http://drive.google.com/uc?export=view&id=1mK0F-KFrEmClSsmZGE4HdiaOKZMAcadY' }}
+              style={{ marginLeft:20, marginTop:20, width:50, height:50, backgroundColor: '#fff' }}
             />
             <Text style={styles.cup}>6 cup</Text>
             <Image
-              source={{ uri: 'http://drive.google.com/uc?export=view&id=1kFmtWn8YZS3HH9xb1DwDFla_JFIJlX0i' }}
+              source={{ uri: 'http://drive.google.com/uc?export=view&id=1D_FfP2Dl2ASQUcG5UjoXsb4Q9LjRhcvR' }}
               style={{ marginLeft:35, marginTop:20, width:50, height:50, backgroundColor: '#fff' }}
             />
             <Text style={styles.distance}>0.2 KM</Text>
@@ -71,10 +72,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   cup: {
-    marginTop: 40,
+    marginTop: 45,
+    marginLeft: 5,
   },
   distance: {
-    marginTop: 40,
+    marginTop: 45,
+    marginLeft: 5,
   },
   use: {
     color: '#fff',

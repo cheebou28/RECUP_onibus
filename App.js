@@ -8,7 +8,7 @@ import PaymentScreen from './src/screens/PaymentScreen';
 import UseNavigationScreen from './src/screens/UseNavigationScreen';
 import ReturnNavigationScreen from './src/screens/ReturnNavigationScreen';
 import QRcodeScreen from './src/screens/QRcodeScreen';
-import DrawerMenu from './src/components/DrawerMenu';
+import MenuScreen from './src/screens/MenuScreen';
 
 const App = createStackNavigator({
   Message: { screen: MessageScreen },
@@ -16,6 +16,8 @@ const App = createStackNavigator({
   Submit: { screen: SubmitScreen },
   Payment: { screen: PaymentScreen },
   UseNavi: { screen: UseNavigationScreen },
+  Menu: { screen: MenuScreen },
+
   ReturnNavi: { screen: ReturnNavigationScreen },
   QRcode: { screen: QRcodeScreen },
 }, {
