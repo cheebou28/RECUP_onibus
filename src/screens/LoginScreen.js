@@ -1,8 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableHighlight, TextInput } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import firebase from 'firebase';
 
 class LoginScreen extends React.Component {
+  state = {
+    email:'',
+    password:'',
+  }
+
+  handleSubmit() {
+
+  }
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -13,14 +24,23 @@ class LoginScreen extends React.Component {
         <TextInput
           style={styles.input1}
           placeholder="Email Adress"
+          value={this.state.email}
+          onChangeText={(text) => { this.setState({ email: text }); }}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
 
         <TextInput
           style={styles.input2}
           placeholder="Password"
+          value={this.state.password}
+          onChangeText={(text) => { this.setState({ password: text }); }}
+          autoCapitalize="none"
+          autoCorrect={false}
+          secureTextEntry
         />
 
-        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('UseNavi'); }}>
+        <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}>
           <Text style={styles.login}>LOGIN</Text>
         </TouchableHighlight>
 
