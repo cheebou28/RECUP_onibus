@@ -1,50 +1,37 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, TextInput } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import firebase from 'firebase';
+import { StyleSheet, View, Text, TouchableHighlight, Image } from 'react-native';
 
 class LoginScreen extends React.Component {
-  state = {
-    email:'',
-    password:'',
-  }
-
-  handleSubmit() {
-
-  }
-
-
   render() {
     return (
       <View style={styles.container}>
-        <Ionicons name="md-arrow-round-back" style={styles.back} onPress={() => { this.props.navigation.navigate('Message'); }} />
 
-        <Text style={styles.title}>Welcome back!</Text>
-
-        <TextInput
-          style={styles.input1}
-          placeholder="Email Adress"
-          value={this.state.email}
-          onChangeText={(text) => { this.setState({ email: text }); }}
-          autoCapitalize="none"
-          autoCorrect={false}
+        <Image
+          source={{ uri: 'http://drive.google.com/uc?export=view&id=1lYBvLUP_vEmWRCenHRHc018vE98WoH8l' }}
+          style={{ alignSelf: 'center', marginTop:'40%', width: 100, height: 160, backgroundColor: '#fff' }}
         />
 
-        <TextInput
-          style={styles.input2}
-          placeholder="Password"
-          value={this.state.password}
-          onChangeText={(text) => { this.setState({ password: text }); }}
-          autoCapitalize="none"
-          autoCorrect={false}
-          secureTextEntry
-        />
+        <Text style={styles.explain}>続行することで、私は18歳以上であることを確認し、RECUPの</Text>
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={styles.termsofuse}>サービス利用規約</Text>
+          <Text style={styles.and}>と</Text>
+          <Text style={styles.privacypolicy}>プライバシーポリシー</Text>
+          <Text style={styles.and}>に同意します。</Text>
+        </View>
 
-        <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}>
-          <Text style={styles.login}>LOGIN</Text>
+        <TouchableHighlight style={styles.google} onPress={() => { this.props.navigation.navigate('MailAuth'); }}>
+          <Image
+            source={{ uri: 'http://drive.google.com/uc?export=view&id=1aUuy4ToKH5ucLE9E3AbdGarDKWgQnpqN' }}
+            style={{ alignSelf: 'center', marginTop: 20, width:350, height:50, backgroundColor: '#fff' }}
+          />
         </TouchableHighlight>
 
-        <Text style={styles.signup} onPress={() => { this.props.navigation.navigate('Submit'); }}>メンバー登録</Text>
+        <Text style={styles.matawa}> - または - </Text>
+
+        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('MailAuth'); }}>
+          <Text style={styles.login}>メールアドレス認証</Text>
+        </TouchableHighlight>
+
       </View>
     );
   }
@@ -52,64 +39,52 @@ class LoginScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
     flex: 1,
+    backgroundColor: '#fff',
   },
-  back: {
-    marginTop: '10%',
-    marginLeft: 40,
-    fontSize: 30,
+  explain: {
+    fontSize: 12,
     color: '#3E4A59',
-    opacity: 0.5,
+    marginTop: '20%',
+    alignSelf: 'center',
   },
-  title: {
-    fontSize: 40,
+  termsofuse: {
+    fontSize: 12,
+    color: '#0071FF',
+    textDecorationLine: 'underline',
+    marginLeft: 60,
+  },
+  and: {
+    fontSize: 12,
     color: '#3E4A59',
-    marginTop: '15%',
-    marginLeft: 40,
   },
-  input1: {
-    fontSize: 14,
-    marginTop: 100,
-    height: 48,
-    width: '80%',
-    alignSelf: 'center',
-    borderBottomWidth: 0.7,
-    borderBottomColor: '#3AD29F',
+  privacypolicy: {
+    fontSize: 12,
+    color: '#0071FF',
+    textDecorationLine: 'underline',
   },
-  input2: {
-    fontSize: 14,
-    marginTop: 25,
-    height: 48,
-    width: '80%',
+  matawa: {
+    fontSize: 12,
+    color: '#3E4A59',
     alignSelf: 'center',
-    borderBottomWidth: 0.7,
-    borderBottomColor: '#3AD29F',
+    marginTop: 40,
   },
   button: {
     backgroundColor: '#3AD29F',
-    height: 48,
+    height: 50,
+    width: 350,
+    marginTop: 20,
     borderRadius: 4,
     justifyContent: 'center',
     alignItems: 'center',
-    width: '80%',
     alignSelf: 'center',
-    marginTop: 100,
-    shadowColor: '#445EE9',
-    shadowOffset: { widh: 0, height: 2 },
+    shadowColor: '#979797',
+    shadowOffset: { widh: 0, height: 1 },
+    shadowRadius: 1,
+    shadowOpacity: 1,
   },
   login: {
     color: '#fff',
-  },
-  signup: {
-    fontSize: 16,
-    marginTop: '5%',
-    alignSelf: 'center',
-    color: '#005226',
-    textDecorationLine: 'underline',
-    opacity: 0.5,
-  },
-  illust: {
   },
 });
 

@@ -2,14 +2,15 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation-stack';
 import firebase from 'firebase';
 
-import MessageScreen from './src/screens/MessageScreen';
 import LoginScreen from './src/screens/LoginScreen';
-import SubmitScreen from './src/screens/SubmitScreen';
+import MailAuthScreen from './src/screens/MailAuthScreen';
+import MailCheckScreen from './src/screens/MailCheckScreen';
 import PaymentScreen from './src/screens/PaymentScreen';
 import UseNavigationScreen from './src/screens/UseNavigationScreen';
 import ReturnNavigationScreen from './src/screens/ReturnNavigationScreen';
 import QRcodeScreen from './src/screens/QRcodeScreen';
 import MenuScreen from './src/screens/MenuScreen';
+
 
 import ENV from './env.json';
 
@@ -27,9 +28,9 @@ firebase.initializeApp(firebaseConfig);
 
 
 const App = createStackNavigator({
-  Message: { screen: MessageScreen },
   Login: { screen: LoginScreen },
-  Submit: { screen: SubmitScreen },
+  MailAuth: { screen: MailAuthScreen },
+  MailCheck: { screen: MailCheckScreen },
   Payment: { screen: PaymentScreen },
   UseNavi: { screen: UseNavigationScreen },
   Menu: { screen: MenuScreen },

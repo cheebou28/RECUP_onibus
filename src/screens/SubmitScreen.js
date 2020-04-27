@@ -3,6 +3,15 @@ import { StyleSheet, Text, View, TouchableHighlight, TextInput } from 'react-nat
 import { Ionicons } from '@expo/vector-icons';
 
 class SubmitScreen extends React.Component {
+  state = {
+    email: '',
+    password: '',
+  }
+
+  handleSubmit() {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -12,11 +21,20 @@ class SubmitScreen extends React.Component {
         <TextInput
           style={styles.input1}
           placeholder="Email Adress"
+          value={this.state.email}
+          onChangeText={(text) => { this.setState({ email: text }); }}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
 
         <TextInput
           style={styles.input2}
           placeholder="Password"
+          value={this.state.password}
+          onChangeText={(text) => { this.setState({ password: text }); }}
+          autoCapitalize="none"
+          autoCorrect={false}
+          secureTextEntry
         />
 
         <TextInput
@@ -24,7 +42,7 @@ class SubmitScreen extends React.Component {
           placeholder="Password again"
         />
 
-        <TouchableHighlight style={styles.button} onPress={() => { this.props.navigation.navigate('Payment'); }}>
+        <TouchableHighlight style={styles.button} onPress={this.handleSubmit.bind(this)}>
           <Text style={styles.signup}>メンバー登録</Text>
         </TouchableHighlight>
 
