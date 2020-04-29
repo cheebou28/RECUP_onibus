@@ -2,22 +2,11 @@ import React from 'react';
 import { StyleSheet, Image, Text, View, TouchableHighlight, TextInput } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import firebase from 'firebase';
-import { NavigationActions, StackActions } from 'react-navigation';
 
 
 class MailAuthScreen extends React.Component {
   state = {
-    email:'',
-  }
-
-  navigateToUseNavi() {
-    const resetAction = StackActions.reset({
-      index: 0,
-      actions: [
-        NavigationActions.navigate({ routeName: 'UseNavi' }),
-      ],
-    });
-    this.props.navigation.dispatch(resetAction);
+    email: {},
   }
 
   handleSubmit() {
@@ -29,9 +18,11 @@ class MailAuthScreen extends React.Component {
     firebase.auth().sendSignInLinkToEmail(this.state.email, actionCodeSettings)
       .then(() => {
         // window.localStorage.setItem('emailForSignIn', email);
-        this.navigateToUseNavi();
+        this.props.navigation.navigate('MailCheck');
       })
-      .catch();
+      .catch(() => {
+        this.props.navigation.navigate('MailAuth');
+      });
   }
 
 

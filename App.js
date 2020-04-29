@@ -28,15 +28,17 @@ firebase.initializeApp(firebaseConfig);
 
 
 const App = createStackNavigator({
+
+  UseNavi: { screen: UseNavigationScreen },
+  ReturnNavi: { screen: ReturnNavigationScreen },
+  Menu: { screen: MenuScreen },
+  Payment: { screen: PaymentScreen },
+  QRcode: { screen: QRcodeScreen },
+
   Login: { screen: LoginScreen },
   MailAuth: { screen: MailAuthScreen },
   MailCheck: { screen: MailCheckScreen },
-  Payment: { screen: PaymentScreen },
-  UseNavi: { screen: UseNavigationScreen },
-  Menu: { screen: MenuScreen },
 
-  ReturnNavi: { screen: ReturnNavigationScreen },
-  QRcode: { screen: QRcodeScreen },
 }, {
   defaultNavigationOptions: () => ({
     header: null,

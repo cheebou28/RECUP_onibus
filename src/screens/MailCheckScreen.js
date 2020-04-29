@@ -1,20 +1,18 @@
 import React from 'react';
 import { StyleSheet, Image, Text, View, TouchableHighlight, TextInput } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import firebase from 'firebase';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 class MailCheckScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Ionicons name="md-arrow-round-back" style={styles.back} onPress={() => { this.props.navigation.navigate('Login'); }} />
+        <Ionicons name="md-arrow-round-back" style={styles.back} onPress={() => { this.props.navigation.navigate('MailAuth'); }} />
 
         <Text style={styles.title}>メールを確認する</Text>
 
         <Text style={styles.explain}>ご入力したメールアドレスに届いたURLを開いて認証してください。</Text>
-
-        <TouchableHighlight style={styles.button}>
-          <Text style={styles.login}>メールを再送する</Text>
-        </TouchableHighlight>
 
       </View>
     );
